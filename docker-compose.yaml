@@ -1,0 +1,24 @@
+services:
+  redis_cache:
+    image: redis/redis-stack:latest
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 2s
+      retries: 10
+    ports:
+      - "6379:6379"
+
+  app:
+    build:
+      context: .
+      args:
+        API_KEY: ${API_KEY}
+        SDK_MODE: ${SDK_MODE}
+    ports:
+      - "8088:8088"
+    environment:
+      - API_KEY=${API_KEY}
+      - SDK_MODE=${SDK_MODE}
+    depends_on:
+      - redis_cache

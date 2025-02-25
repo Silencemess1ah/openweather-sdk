@@ -1,0 +1,23 @@
+spring:
+
+  data:
+    redis:
+      host: redis_cache
+      port: 6379
+      cacheKey: "weather_by_city"
+      cacheSize: 10
+      ttl: 10 #in minutes
+      timeout: 4000ms
+
+sdk-profile:
+  mode: ${SDK_MODE}
+  cron: "0 */2 * ? * *" #every 2 minutes
+
+server:
+  port: 8088
+
+open-weather:
+  apiKey: ${API_KEY}
+  baseUrl: "https://api.openweathermap.org/data/2.5/weather?q={city}&appid={apiKey}"
+  cityHolder: "city"
+  apiHolder: "apiKey"
