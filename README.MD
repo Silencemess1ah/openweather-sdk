@@ -19,7 +19,7 @@
 
 1. **Склонируйте репозиторий:**
    ```bash
-   git clone https://github.com/Silencemess1ah/openweather-sdk.git
+   git clone https://github.com/Silencemess1ah/openweather-sdk
    cd openweather-sdk
    ```
 2. **Установите зависимости**
